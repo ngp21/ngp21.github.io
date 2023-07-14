@@ -1,0 +1,977 @@
+/* Inspiration from Raindrop site css, parts of it
+
+:root {
+  --screen-background: #18191b;
+  --secondary-background: hsla(0, 0%, 100%, 0.1);
+  --secondary-text: hsla(0, 0%, 100%, 0.7);
+  --p_font: "Poppins";
+}
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-timeline: --timeline x;
+  scroll-timeline: --timeline vertical;
+  background: var(--screen-background);
+  height: 100%;
+  overflow: auto;
+  overflow: overlay;
+  scroll-snap-stop: always;
+  -webkit-scroll-snap-stop: always;
+  scroll-snap-type: x mandatory;
+  -webkit-scroll-snap-type: x mandatory;
+}
+body,
+html {
+  width: 100%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+  display: flex;
+  margin: 0;
+  min-height: 100%;
+  max-height: 100vh;
+  padding: 0;
+  text-decoration-thickness: 1px;
+  text-rendering: optimizelegibility;
+  text-underline-offset: 0.4em;
+  color: white;
+  font-family: var(--p_font);
+}
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  margin: 16px 0;
+}
+h2 {
+  font-size: 48px;
+  letter-spacing: -0.5px;
+}
+h3 {
+  font-size: 32px;
+}
+h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+hr {
+  background-image: linear-gradient(313deg, CanvasText, CanvasText);
+  border: 0;
+  height: 2px;
+  margin: 48px 0;
+}
+.center {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.center:not([hidden]) {
+  display: flex;
+}
+.text-container {
+  font-size: 24px;
+  line-height: 1.5;
+  max-width: 600px;
+  text-align: left;
+}
+.text-container.center {
+  text-align: center;
+}
+.text-container ol {
+  list-style-position: inside;
+  padding-left: 0;
+}
+.text-container .icon {
+  vertical-align: -2px;
+}
+.text-container a {
+  color: currentColor;
+}
+.slide {
+  background: var(--screen-background);
+  flex-shrink: 0;
+  min-height: 100%;
+  opacity: var(--intersection-ratio, 1);
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: start;
+  -webkit-scroll-snap-align: start;
+  transition: opacity 0.15s ease-in-out;
+  width: 100%;
+}
+.slide:last-child {
+  scroll-snap-align: end;
+  -webkit-scroll-snap-align: end;
+}
+.backport-background {
+  bottom: 0;
+  left: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.spacer {
+  margin: 48px;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.blue-green-gradient {
+  background-image: linear-gradient(313deg, #00ff85, #009ad7);
+}
+.pink-red-gradient {
+  background-image: linear-gradient(313deg, #fa85ff, #ff6b6b);
+}
+.blue-purple-gradient {
+  background-image: linear-gradient(313deg, #d885ff, #5083f0);
+}
+.mint-green-gradient {
+  background-image: linear-gradient(313deg, #43f053, #1ee8d7);
+}
+.yellow-orange-gradient {
+  background-image: linear-gradient(313deg, #ff8f85, #f0c850);
+}
+*/
+
+/* Before Enzo method 
+:root {
+  --screen-background: #18191b;
+  --secondary-background: hsla(0, 0%, 100%, 0.1);
+  --secondary-text: hsla(0, 0%, 100%, 0.7);
+  --p_font: "Poppins";
+  --font_color: white;
+}
+
+body {
+  background: var(--screen-background);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  color: var(--font_color);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  display: flex;
+
+  section {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    scroll-margin-left: 100px;
+  }
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.blue-green-gradient {
+  background-image: linear-gradient(313deg, #00ff85, #009ad7);
+}
+.pink-red-gradient {
+  background-image: linear-gradient(313deg, #fa85ff, #ff6b6b);
+}
+.blue-purple-gradient {
+  background-image: linear-gradient(313deg, #d885ff, #5083f0);
+}
+.mint-green-gradient {
+  background-image: linear-gradient(313deg, #43f053, #1ee8d7);
+}
+.yellow-orange-gradient {
+  background-image: linear-gradient(313deg, #ff8f85, #f0c850);
+}
+
+.homepage {
+  min-width: 100vw !important;
+   max-height: 100vh !important; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.page-text {
+  min-width: 100vw !important;
+  max-height: 100vh !important;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  p {
+    font-size: 1.5rem;
+    width: 60%;
+  }
+  .button {
+    border: 2px solid limegreen;
+    border-radius: 15px;
+    padding: 13px;
+  }
+}
+*/
+
+:root {
+  --screen-background: #18191b;
+  --secondary-background: hsla(0, 0%, 100%, 0.1);
+  --secondary-text: hsla(0, 0%, 100%, 0.7);
+  --h2_fontsize: 4rem;
+  --h3_fontsize: 1.9rem;
+  --h4_fontsize: 2rem;
+  --p_fontsize: 1.15rem;
+  --font_color: rgb(230, 230, 230);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #18191b00;
+  font-size: 3rem;
+  max-height: 100vh;
+  overflow: hidden;
+  font-family: "Poppins";
+  color: var(--font_color);
+}
+
+h2 {
+  font-family: "Bebas Neue";
+  font-size: var(--h2_fontsize);
+  margin: 0;
+}
+h3 {
+  font-size: var(--h3_fontsize);
+  font-family: "Bebas Neue";
+  margin: 0;
+}
+h4 {
+  font-size: var(--h4_fontsize);
+  margin: 0;
+}
+
+p {
+  font-size: var(--p_fontsize);
+  margin: 0;
+}
+
+.navbar {
+  position: absolute;
+  height: 10vh;
+  top: 0.8vh;
+  right: 3vw;
+  z-index: 99;
+  display: flex;
+  gap: 1.2vw;
+
+  .nav-btns {
+    font-family: "Raleway";
+    font-size: 1.7rem;
+    font-weight: 300;
+  }
+}
+
+.container {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  /* pour ie et mozilla */
+  -ms-overlow-style: none;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.homepage {
+  h2 {
+    font-family: "Parisienne";
+    font-size: 8rem;
+    font-weight: 300;
+  }
+  h3 {
+    font-family: "Bebas Neue";
+  }
+}
+
+.bloc_horizontal {
+  display: flex;
+  flex-direction: row;
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+}
+
+.slide {
+  min-width: 98vw;
+  height: 100vh;
+  display: flex;
+  gap: 2vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.homepage {
+  background: rgb(47, 47, 47);
+  h2,
+  h3 {
+    margin: 0 !important;
+  }
+}
+.about {
+  background: rgb(39, 39, 39);
+  p {
+    width: 45%;
+  }
+}
+
+@keyframes myAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.separation {
+  background-color: rgb(249, 50, 50);
+  min-width: 28vw;
+  font-size: 1.7rem;
+  color: white;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  padding: 2rem 2rem 2rem 2rem;
+}
+
+.portfolio {
+  background: rgb(35, 35, 35);
+  min-width: 48vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1vh;
+  z-index: -1;
+
+  .portfolio_cards {
+    height: 45vh;
+    width: 47vw;
+    cursor: pointer;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(107, 107, 107);
+    margin-bottom: 4px;
+
+    .image_box {
+      height: 87vh;
+      width: 100%;
+
+      .image_card {
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(8px) grayscale(85%);
+        transition: 500ms backdrop-filter linear;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .site_titles {
+          font-family: "Bebas Neue";
+          font-size: 3rem;
+          margin: auto;
+        }
+      }
+    }
+
+    .presentation_card {
+      height: 12vh;
+      width: 100%;
+      background: rgba(20, 20, 20, 0.3);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      text-align: center;
+      h3 {
+        font-size: 1.6rem;
+        width: 25%;
+      }
+      p {
+        width: 60%;
+        font-size: 1rem;
+      }
+    }
+  }
+  .portfolio_cards:hover {
+    .site_titles {
+      animation: myAnimation ease-in 0.3s;
+      animation-fill-mode: forwards;
+    }
+    .image_card {
+      backdrop-filter: none;
+    }
+  }
+}
+
+/**** Test PORTFOLIO 2 Layout with clear background on hover ****/
+
+.portfolio2 {
+  background: rgb(35, 35, 35);
+  min-width: 48vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1vh;
+  z-index: -1;
+  .portfolio_cards {
+    height: 45vh;
+    width: 47vw;
+    cursor: pointer;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(107, 107, 107);
+    margin-bottom: 4px;
+
+    .image_box {
+      height: 100%;
+      width: 100%;
+
+      .image_card {
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(6px) grayscale(70%);
+        transition: 500ms backdrop-filter linear;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2vh;
+        .site_titles {
+          font-family: "Bebas Neue";
+          font-size: 3rem;
+          text-shadow: 3px 2px black;
+        }
+        .subtext {
+          font-family: "Raleway";
+          color: white;
+          text-shadow: 1px 1px black;
+          font-size: clamp(1.2rem, 1.5vw, 2.8rem);
+          font-weight: 300;
+        }
+      }
+    }
+
+    .presentation_card {
+      height: 10vh;
+      width: 100%;
+      background: rgba(20, 20, 20, 0.3);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      text-align: center;
+      h3 {
+        font-size: 1.6rem;
+        width: 25%;
+      }
+      p {
+        width: 70%;
+        font-size: 1.1rem;
+      }
+    }
+  }
+  .portfolio_cards:hover {
+    .subtext {
+      animation: myAnimation ease-in 0.3s;
+      animation-fill-mode: forwards;
+    }
+    .site_titles {
+      animation: myAnimation ease-in 0.3s;
+      animation-fill-mode: forwards;
+    }
+    .image_card {
+      backdrop-filter: none;
+    }
+  }
+  .site1 {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(0, 255, 133, 0.07),
+        rgba(0, 154, 215, 0.07)
+      );
+    }
+    .image_box {
+      background: no-repeat top/100% url("../images/site_yoda.png");
+    }
+  }
+
+  .site1:hover {
+    .presentation_card {
+      transition: background-image 1s ease-in;
+      transition: color 0.35s ease-in;
+      color: black;
+      background-image: linear-gradient(
+        313deg,
+        rgb(0, 255, 132),
+        rgb(0, 154, 215)
+      );
+    }
+  }
+
+  .site2 {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(255, 143, 133, 0.06),
+        rgba(240, 200, 80, 0.06)
+      );
+    }
+    .image_box {
+      background: no-repeat top/100% url("../images/site_espt.png");
+    }
+  }
+  .site2:hover {
+    .presentation_card {
+      transition: background-color 1s ease-in;
+      background-color: white;
+      transition: color 0.5s ease-in;
+      color: black;
+    }
+  }
+
+  .site3 {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(216, 133, 255, 0.05),
+        rgba(80, 131, 240, 0.05)
+      );
+    }
+    .image_box {
+      background: no-repeat top/100% url("../images/site_lex.png");
+    }
+  }
+  .site3:hover {
+    .presentation_card {
+      transition: background-image 1s ease-in;
+      transition: color 0.5s ease-in;
+      color: black;
+      background-image: linear-gradient(
+        313deg,
+        rgba(216, 133, 255, 1),
+        rgba(80, 131, 240, 1)
+      );
+    }
+  }
+
+  .site4 {
+    .image_box {
+      background: no-repeat top/100% url("../images/site_sashenka.png");
+    }
+  }
+  .site4:hover {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(67, 240, 83, 0.05),
+        rgba(30, 232, 215, 0.05)
+      );
+    }
+  }
+}
+
+/*** THIRD WAY Text disappears on hover ***/
+
+.portfolio3 {
+  background: rgb(35, 35, 35);
+  min-width: 48vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1vh;
+  z-index: -1;
+  .portfolio_cards {
+    height: 45vh;
+    width: 47vw;
+    cursor: pointer;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(107, 107, 107);
+    margin-bottom: 4px;
+    .image_box {
+      height: 100%;
+      width: 100%;
+      .image_card {
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(8px) grayscale(85%);
+        transition: 500ms backdrop-filter linear;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2vh;
+        .site_titles {
+          font-family: "Bebas Neue";
+          font-size: clamp(2rem, 2.8vw, 4.8rem);
+        }
+        .hover_text {
+          color: white;
+          text-shadow: 2px 2px black;
+          font-size: clamp(1rem, 1.3vw, 2.8rem);
+          font-weight: 500;
+          width: 70%;
+        }
+      }
+    }
+  }
+  .portfolio_cards:hover {
+    .hover_text {
+      animation: myAnimation ease-in 0.3s;
+      animation-fill-mode: forwards;
+    }
+    .site_titles {
+      animation: myAnimation ease-in 0.3s;
+      animation-fill-mode: forwards;
+    }
+    .image_card {
+      backdrop-filter: none;
+    }
+  }
+  .site1 {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(0, 255, 133, 0.07),
+        rgba(0, 154, 215, 0.07)
+      );
+    }
+    .image_box {
+      background: no-repeat top/100% url("../images/site_yoda.png");
+    }
+  }
+
+  .site1:hover {
+    .presentation_card {
+      transition: background-image 1s ease-in;
+      transition: color 0.35s ease-in;
+      color: black;
+      background-image: linear-gradient(
+        313deg,
+        rgb(0, 255, 132),
+        rgb(0, 154, 215)
+      );
+    }
+  }
+
+  .site2 {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(255, 143, 133, 0.06),
+        rgba(240, 200, 80, 0.06)
+      );
+    }
+    .image_box {
+      background: no-repeat top/100% url("../images/site_espt.png");
+    }
+  }
+  .site2:hover {
+    .presentation_card {
+      transition: background-color 1s ease-in;
+      background-color: white;
+      transition: color 0.5s ease-in;
+      color: black;
+    }
+  }
+
+  .site3 {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(216, 133, 255, 0.05),
+        rgba(80, 131, 240, 0.05)
+      );
+    }
+    .image_box {
+      background: no-repeat top/100% url("../images/site_lex.png");
+    }
+  }
+  .site3:hover {
+    .presentation_card {
+      transition: background-image 1s ease-in;
+      transition: color 0.5s ease-in;
+      color: black;
+      background-image: linear-gradient(
+        313deg,
+        rgba(216, 133, 255, 1),
+        rgba(80, 131, 240, 1)
+      );
+    }
+  }
+
+  .site4 {
+    .image_box {
+      background: no-repeat top/100% url("../images/site_sashenka.png");
+    }
+  }
+  .site4:hover {
+    .presentation_card {
+      background-image: linear-gradient(
+        313deg,
+        rgba(67, 240, 83, 0.05),
+        rgba(30, 232, 215, 0.05)
+      );
+    }
+  }
+}
+
+.slide4 {
+  min-width: 95vw;
+  height: 100vh;
+  display: flex;
+  gap: 2vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.portfolio4 {
+  background: rgb(35, 35, 35);
+  min-width: 170vw;
+  flex-direction: row;
+  gap: 0;
+  .site1 {
+    .image_card {
+      background: no-repeat top/203% url("../images/site_yoda.png");
+    }
+  }
+  .site2 {
+    .image_card {
+      background: no-repeat top/203% url("../images/site_espt.png");
+    }
+  }
+  .site3 {
+    .image_card {
+      background: no-repeat top/203% url("../images/site_lex.png");
+    }
+  }
+  .site3:hover {
+    .presentation_card {
+      h3 {
+        color: white;
+      }
+      transition: background-image 1s ease-in;
+      transition: color 0.5s ease-in;
+      color: black;
+      background-image: linear-gradient(
+        313deg,
+        rgba(216, 133, 255, 1),
+        rgba(80, 131, 240, 1)
+      );
+    }
+  }
+  .site4 {
+    .image_card {
+      background: no-repeat top/203% url("../images/site_sashenka.png");
+    }
+  }
+
+  .portfolio_cards {
+    height: 100%;
+    max-width: 42vw;
+    cursor: pointer;
+    scroll-snap-align: start;
+    border-right: 1px solid rgba(190, 190, 190, 0.938);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .image_card {
+      height: 87vh;
+      width: 100%;
+      filter: blur(3px) grayscale(70%);
+      transition: 1s;
+    }
+    .presentation_card {
+      height: 13vh;
+      width: 100%;
+      background: rgba(20, 20, 20, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        width: 70%;
+      }
+    }
+  }
+  .portfolio_cards:hover {
+    .image_card {
+      filter: none;
+    }
+  }
+}
+
+.site1 {
+  .image_box {
+    background: no-repeat top/100% url("../images/site_yoda.png");
+  }
+}
+
+.site1:hover {
+  .presentation_card {
+    background-image: linear-gradient(
+      313deg,
+      rgba(0, 255, 133, 0.07),
+      rgba(0, 154, 215, 0.07)
+    );
+  }
+}
+
+.site2 {
+  .image_box {
+    background: no-repeat top/100% url("../images/site_espt.png");
+  }
+}
+.site2:hover {
+  .presentation_card {
+    background-image: linear-gradient(
+      313deg,
+      rgba(255, 143, 133, 0.06),
+      rgba(240, 200, 80, 0.06)
+    );
+  }
+}
+
+.site3 {
+  .image_box {
+    background: no-repeat top/100% url("../images/site_lex.png");
+  }
+}
+.site3:hover {
+  .presentation_card {
+    background-image: linear-gradient(
+      313deg,
+      rgba(216, 133, 255, 0.05),
+      rgba(80, 131, 240, 0.05)
+    );
+  }
+}
+
+.site4 {
+  .presentation_card {
+    background-image: linear-gradient(
+      313deg,
+      rgba(67, 240, 83, 0.05),
+      rgba(30, 232, 215, 0.05)
+    );
+  }
+  .image_box {
+    background: no-repeat top/100% url("../images/site_sashenka.png");
+  }
+}
+.site4:hover {
+  .presentation_card {
+    background-image: linear-gradient(
+      313deg,
+      rgba(67, 240, 83, 0.05),
+      rgba(30, 232, 215, 0.05)
+    );
+  }
+}
+
+.site5 {
+  .image_card {
+    background: no-repeat top/173% url("../images/Screenshot_6.png");
+  }
+}
+
+.contact {
+  background: rgb(28, 28, 28);
+}
+
+/* GRADIENTS */
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.blue-green-gradient {
+  background-image: linear-gradient(
+    313deg,
+    rgba(0, 255, 133, 1),
+    rgba(0, 154, 215, 1)
+  );
+}
+.pink-red-gradient {
+  background-image: linear-gradient(
+    313deg,
+    rgba(250, 133, 255, 1),
+    rgba(255, 107, 107, 1)
+  );
+}
+.blue-purple-gradient {
+  background-image: linear-gradient(
+    313deg,
+    rgba(216, 133, 255, 1),
+    rgba(80, 131, 240, 1)
+  );
+}
+.mint-green-gradient {
+  background-image: linear-gradient(
+    313deg,
+    rgba(67, 240, 83, 1),
+    rgba(30, 232, 215, 1)
+  );
+}
+.yellow-orange-gradient {
+  background-image: linear-gradient(
+    313deg,
+    rgba(255, 143, 133, 1),
+    rgba(240, 200, 80, 1)
+  );
+}
